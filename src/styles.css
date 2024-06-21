@@ -1,5 +1,56 @@
 body {
     font-family: Arial, sans-serif;
+    margin: 0; /* Remove default margin */
+    display: grid;
+    grid-template-columns: 250px 1fr; /* Sidebar and main content */
+    grid-template-rows: auto; /* Automatically sized rows */
+    min-height: 100vh; /* Full viewport height */
+}
+
+#navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+#userInfo {
+    margin-bottom: 20px;
+}
+
+#projects {
+    padding-right: 20px; /* Spacing between project list and buttons */
+}
+
+#projectList {
+    list-style-type: none;
+    padding: 0;
+}
+
+#projectList li {
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#projectList li:hover {
+    background-color: #555;
+}
+
+#addProject, #addTask {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#addProject:hover {
+    background-color: #45a049;
+}
+
+#currentProjectDisplay {
+    padding: 20px;
 }
 
 .modal {
@@ -11,7 +62,7 @@ body {
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scrolling if needed */
-    background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+    background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
 }
 
 .modal-content {
@@ -22,15 +73,33 @@ body {
     width: 80%; /* 80% width of modal */
     max-width: 600px; /* Maximum width of modal */
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative; /* To position close button */
 }
 
 .projectItem {
     cursor: pointer;
+    padding: 10px;
 }
 
 .projectItem.active {
     background-color: #ddd;
     font-weight: bold;
 }
+
+.projectItem .deleteProjectBtn {
+    display: none; /* Hide button by default */
+    background-color: hsl(0, 47%, 87%); /* Red background for delete button */
+    color: white;
+    border: none;
+    padding: 5px;
+    border-radius: 50%; /* Rounded shape for button */
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    margin-left: 15px;
+}
+
+.projectItem:hover .deleteProjectBtn {
+    display: inline-block; /* Show button on hover */
+}
+

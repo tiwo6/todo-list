@@ -19,6 +19,32 @@ function setActiveProjectIndex(index) {
 createProjectOverview(projectDatabase, projectList, setActiveProjectIndex);
 displayCurrentProject(projectDatabase[activeProjectIndex], currentProjectDisplay);
 
+
+// Function to delete a project
+function deleteProject(projectId) {
+    // Remove project from projectDatabase based on projectId
+    projectDatabase.splice(projectId, 1); // Assuming projectId corresponds to index in array
+
+    // Update project list view
+    createProjectOverview(projectDatabase, projectList);
+}
+
+// Event delegation for dynamically added delete buttons
+projectList.addEventListener('click', function(event) {
+    const target = event.target;
+
+    // Check if clicked element is a delete button within a project item
+    if (target.classList.contains('deleteProjectBtn')) {
+        // Find the parent project item (li element)
+        const projectItem = target.closest('.projectItem');
+
+        if (projectItem) {
+            const projectId = projectItem.dataset.projectId; // Assuming you have a data attribute for projectId
+            deleteProject(projectId);
+        }
+    }
+});
+
 // Add event listeners to project items
 selectActiveProject(Array.from(document.querySelectorAll('.projectItem')), projectDatabase, currentProjectDisplay, setActiveProjectIndex);
 

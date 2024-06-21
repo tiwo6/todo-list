@@ -6,7 +6,10 @@ function createProjectOverview(projectDatabase, projectList, setActiveProjectInd
         projectItem.classList.add("projectItem");
         projectItem.textContent = project.title;
         projectItem.dataset.projectId = index; // Assign a unique ID based on the index
-
+        const deleteProjectBtn = document.createElement("button");
+        deleteProjectBtn.textContent = "❌";
+        deleteProjectBtn.classList.add("deleteProjectBtn");
+        projectItem.appendChild(deleteProjectBtn);
         projectList.appendChild(projectItem);
     });
 
@@ -21,7 +24,8 @@ function displayCurrentProject(project, element) {
         <ul>
             ${project.tasks.map(task => `<li>${task.title}</li>`).join('')}
         </ul>
-    `;
+    
+        `;
 }
 
 function selectActiveProject(projectItems, projectDatabase, currentProjectDisplay, setActiveProjectIndex) {
