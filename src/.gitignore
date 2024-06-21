@@ -1,0 +1,28 @@
+# Node modules directory
+node_modules/
+
+# Production build output
+dist/
+
+# Local environment settings
+.env
+
+# Log files
+*.log
+
+# Mac OS system files
+.DS_Store
+
+# Linux system files
+*.swp
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# npm debug file
+npm-debug.log*
